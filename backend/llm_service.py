@@ -3,13 +3,10 @@ import json
 from groq import Groq
 from dotenv import load_dotenv
 
-# Load env variables
 load_dotenv()
 
-# Initialize Groq client
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-# Model name
 MODEL = "llama-3.3-70b-versatile"
 
 
@@ -17,10 +14,10 @@ def generate_question(topic):
     prompt = f"""
 You are a strict viva examiner.
 
-Ask one clear conceptual question about: {topic}
+Ask ONE conceptual viva question about: {topic}
 
 Rules:
-- Only ONE question
+- Only one question
 - No explanation
 """
 
@@ -29,7 +26,7 @@ Rules:
         messages=[{"role": "user", "content": prompt}],
     )
 
-    return response.choices[0].message.content
+    return response.choices[0].message.content.strip()
 
 
 def evaluate_answer(answer):
@@ -40,8 +37,7 @@ Evaluate this answer:
 
 "{answer}"
 
-Return ONLY valid JSON:
-
+Return ONLY JSON:
 {{
   "score": number (0-10),
   "feedback": "short feedback",
@@ -54,7 +50,7 @@ Return ONLY valid JSON:
         messages=[{"role": "user", "content": prompt}],
     )
 
-    content = response.choices[0].message.content
+    content = response.choices[0].message.content.strip()
 
     try:
         return json.loads(content)

@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-from llm_service import generate_question, evaluate_answer
+from backend.backend.llm_service import generate_question, evaluate_answer
 
 router = APIRouter()
 
