@@ -84,7 +84,7 @@ Open `index.html` in your browser.
 
 ---
 
-##  How It Works
+##  How It Works.
 
 1. User enters a topic
 2. System generates a question using AI
