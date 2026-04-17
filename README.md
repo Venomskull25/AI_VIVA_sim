@@ -23,7 +23,7 @@ The system uses advanced AI techniques such as Natural Language Processing (NLP)
 
 **Frontend:**
 
-* HTML
+* HTML.
 * CSS
 * JavaScript
 
